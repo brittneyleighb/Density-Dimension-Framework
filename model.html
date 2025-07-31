@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dimensional Ladder: Black Hole Consciousness Model</title>
+    <style>
+        body {
+            margin: 0;
+            padding: 20px;
+            font-family: 'Arial', sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a2e 50%, #16213e 100%);
+            color: white;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        h1 {
+            text-align: center;
+            font-size: 2.5em;
+            margin-bottom: 40px;
+            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .dimensional-ladder {
+            position: relative;
+            height: 800px;
+            margin: 40px 0;
+        }
+        
+        .dimension {
+            position: absolute;
+            width: 200px;
+            height: 80px;
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 14px;
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+        
+        .dimension:hover {
+            transform: scale(1.1);
+            box-shadow: 0 8px 25px rgba(255,255,255,0.2);
+        }
+        
+        .dim-1d { 
+            background: linear-gradient(135deg, #ff9a9e, #fecfef);
+            color: #333;
+            left: 50%;
+            top: 700px;
+            transform: translateX(-50%);
+        }
+        
+        .dim-2d { 
+            background: linear-gradient(135deg, #a8edea, #fed6e3);
+            color: #333;
+            left: 50%;
+            top: 600px;
+            transform: translateX(-50%);
+        }
+        
+        .dim-3d { 
+            background: linear-gradient(135deg, #ffecd2, #fcb69f);
+            color: #333;
+            left: 50%;
+            top: 500px;
+            transform: translateX(-50%);
+        }
+        
+        .dim-4d { 
+            background: linear-gradient(135deg, #a8c8ec, #7209b7);
+            color: white;
+            left: 30%;
+            top: 400px;
+            transform: translateX(-50%);
+        }
+        
+        .dim-5d { 
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            left: 70%;
+            top: 400px;
+            transform: translateX(-50%);
+        }
+        
+        .dim-6d { 
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            left: 25%;
+            top: 250px;
+            transform: translateX(-50%);
+        }
+        
+        .dim-7d { 
+            background: linear-gradient(135deg, #4facfe, #00f2fe);
+            color: #333;
+            left: 75%;
+            top: 250px;
+            transform: translateX(-50%);
+        }
+        
+        .black-hole {
+            position: absolute;
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            background: radial-gradient(circle, #000000 30%, #1a1a2e 70%, #ff6b6b 100%);
+            left: 50%;
+            top: 50px;
+            transform: translateX(-50%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            color: white;
+            font-size: 12px;
+            text-align: center;
+            animation: pulse 2s infinite;
+            box-shadow: 0 0 30px rgba(255, 107, 107, 0.5);
+        }
+        
+        @keyframes pulse {
+            0%, 100% { transform: translateX(-50%) scale(1); }
+            50% { transform: translateX(-50%) scale(1.1); }
+        }
+        
+        .arrow {
+            position: absolute;
+            width: 2px;
+            background: linear-gradient(to bottom, rgba(255,255,255,0.3), rgba(255,255,255,0.1));
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        .arrow1 { height: 80px; top: 170px; }
+        .arrow2 { height: 120px; top: 270px; }
+        .arrow3 { height: 80px; top: 420px; }
+        .arrow4 { height: 80px; top: 520px; }
+        .arrow5 { height: 80px; top: 620px; }
+        
+        .info-panel {
+            position: fixed;
+            top: 50%;
+            right: -400px;
+            width: 350px;
+            height: 500px;
+            background: rgba(26, 26, 46, 0.95);
+            border-radius: 15px;
+            padding: 20px;
+            transform: translateY(-50%);
+            transition: right 0.3s ease;
+            border: 1px solid rgba(255,255,255,0.1);
+            backdrop-filter: blur(10px);
+        }
+        
+        .info-panel.active {
+            right: 20px;
+        }
+        
+        .close-btn {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            background: none;
+            border: none;
+            color: white;
+            font-size: 20px;
+            cursor: pointer;
+        }
+        
+        .equation {
+            background: rgba(0,0,0,0.3);
+            padding: 10px;
+            border-radius: 5px;
+            margin: 10px 0;
+            font-family: 'Courier New', monospace;
+            border-left: 3px solid #4ecdc4;
+        }
+        
+        .legend {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            background: rgba(26, 26, 46, 0.9);
+            padding: 20px;
+            border-radius: 10px;
+            border: 1px solid rgba(255,255,255,0.1);
+        }
+        
+        .legend h3 {
+            margin-top: 0;
+            color: #4ecdc4;
+        }
+        
+        .connecting-lines {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
+        
+        .line {
+            position: absolute;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+        }
+        
+        .line1 { width: 200px; top: 300px; left: 45%; transform: rotate(25deg); }
+        .line2 { width: 200px; top: 300px; left: 35%; transform: rotate(-25deg); }
+        .line3 { width: 150px; top: 200px; left: 42%; transform: rotate(35deg); }
+        .line4 { width: 150px; top: 200px; left: 42%; transform: rotate(-35deg); }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Multidimensional Black Hole-Consciousness Model</h1>
+        
+        <div class="legend">
+            <h3>Density-Dimension Framework</h3>
+            <p><strong>ρ(d) = ρ₀ × exp(α(d-3))</strong></p>
+            <p><strong>I_c(ρ,d) = k log(Ω(ρ,d))</strong></p>
+            <p>Click dimensions to explore</p>
+        </div>
+        
+        <div class="dimensional-ladder">
+            <div class="connecting-lines">
+                <div class="line line1"></div>
+                <div class="line line2"></div>
+                <div class="line line3"></div>
+                <div class="line line4"></div>
+            </div>
+            
+            <div class="black-hole" onclick="showInfo('blackhole')">
+                BLACK HOLE<br>
+                Convergence Point
+            </div>
+            
+            <div class="arrow arrow1"></div>
+            <div class="arrow arrow2"></div>
+            <div class="arrow arrow3"></div>
+            <div class="arrow arrow4"></div>
+            <div class="arrow arrow5"></div>
+            
+            <div class="dimension dim-7d" onclick="showInfo('7d')">
+                7D: VOID<br>
+                Infinite Potential<br>
+                Pre-form State
+            </div>
+            
+            <div class="dimension dim-6d" onclick="showInfo('6d')">
+                6D: CONSCIOUSNESS<br>
+                Creative Intelligence<br>
+                Quantum Coherence
+            </div>
+            
+            <div class="dimension dim-5d" onclick="showInfo('5d')">
+                5D: TRANSITION<br>
+                Quantum Fields<br>
+                Information Flow
+            </div>
+            
+            <div class="dimension dim-4d" onclick="showInfo('4d')">
+                4D: SPACETIME<br>
+                Relativistic Effects<br>
+                Curvature
+            </div>
+            
+            <div class="dimension dim-3d" onclick="showInfo('3d')">
+                3D: SOLIDS<br>
+                Classical Matter<br>
+                Baseline Reality
+            </div>
+            
+            <div class="dimension dim-2d" onclick="showInfo('2d')">
+                2D: LIQUIDS<br>
+                Fluid Dynamics<br>
+                Surface Phenomena
+            </div>
+            
+            <div class="dimension dim-1d" onclick="showInfo('1d')">
+                1D: GASES<br>
+                Kinetic Theory<br>
+                Maximum Entropy
+            </div>
+        </div>
+        
+        <div class="info-panel" id="infoPanel">
+            <button class="close-btn" onclick="closeInfo()">×</button>
+            <div id="infoContent">
+                <h3>Select a dimension to explore</h3>
+                <p>Click on any dimensional state or the black hole to learn more about its properties and mathematical relationships.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const infoData = {
+            'blackhole': {
+                title: 'Black Hole Convergence Point',
+                content: `
+                    <h3>Black Hole: Dimensional Gateway</h3>
+                    <p>The convergence point where all dimensional states meet. Information undergoes transformation rather than destruction.</p>
+                    
+                    <div class="equation">
+                        S = (kc³A)/(4ℏG)
+                        <br><small>Bekenstein-Hawking Entropy</small>
+                    </div>
+                    
+                    <div class="equation">
+                        T = (ℏc³)/(8πGMk_B)
+                        <br><small>Hawking Temperature</small>
+                    </div>
+                    
+                    <p><strong>Key Properties:</strong></p>
+                    <ul>
+                        <li>Maximum information density</li>
+                        <li>Dimensional phase transitions</li>
+                        <li>Consciousness-information nexus</li>
+                        <li>Gateway to void states</li>
+                    </ul>
+                    
+                    <p><strong>Testable Prediction:</strong><br>
+                    Information storage ∝ A³/⁴ (modified holographic scaling)</p>
+                `
+            },
+            '7d': {
+                title: '7D: Void - Infinite Potential',
+                content: `
+                    <h3>7D: The Void State</h3>
+                    <p>The highest dimensional state representing infinite potential and pre-form consciousness.</p>
+                    
+                    <div class="equation">
+                        I₇ → S_BH (Bekenstein-Hawking limit)
+                        <br><small>Maximum Information State</small>
+                    </div>
+                    
+                    <p><strong>Characteristics:</strong></p>
+                    <ul>
+                        <li>Pure potential energy</li>
+                        <li>Pre-manifestation consciousness</li>
+                        <li>Quantum vacuum fluctuations</li>
+                        <li>Source of cosmic inflation</li>
+                    </ul>
+                    
+                    <p><strong>Connection to Physics:</strong><br>
+                    Corresponds to false vacuum states that drive cosmic inflation and universe generation.</p>
+                `
+            },
+            '6d': {
+                title: '6D: Consciousness Structure',
+                content: `
+                    <h3>6D: Conscious Intelligence</h3>
+                    <p>Organized information structures capable of creative intelligence and quantum coherence.</p>
+                    
+                    <div class="equation">
+                        I₆ = k log(Ω_coherent)
+                        <br><small>Quantum Coherent States</small>
+                    </div>
+                    
+                    <div class="equation">
+                        τ_coherence ∝ 1/√(g₀₀)
+                        <br><small>Consciousness-Gravity Correlation</small>
+                    </div>
+                    
+                    <p><strong>Recent Evidence (2024):</strong></p>
+                    <ul>
+                        <li>Microtubule quantum coherence confirmed</li>
+                        <li>Anesthetic binding to consciousness</li>
+                        <li>Terahertz oscillations in neurons</li>
+                    </ul>
+                    
+                    <p><strong>Testable Prediction:</strong><br>
+                    Coherence times correlate with gravitational field strength</p>
+                `
+            },
+            '5d': {
+                title: '5D: Transitional Quantum Fields',
+                content: `
+                    <h3>5D: Quantum Field Transitions</h3>
+                    <p>The bridge between classical spacetime and conscious structures.</p>
+                    
+                    <div class="equation">
+                        I₄₋₅ = k log(Ω) + (G/c⁴)∫T_μν dτ
+                        <br><small>Spacetime-Information Coupling</small>
+                    </div>
+                    
+                    <p><strong>Key Features:</strong></p>
+                    <ul>
+                        <li>Quantum field fluctuations</li>
+                        <li>Entanglement networks</li>
+                        <li>Information processing nodes</li>
+                        <li>Dimensional phase boundaries</li>
+                    </ul>
+                    
+                    <p><strong>Physical Manifestation:</strong><br>
+                    Quantum fields near event horizons, vacuum polarization effects</p>
+                `
+            },
+            '4d': {
+                title: '4D: Spacetime Curvature',
+                content: `
+                    <h3>4D: Classical Spacetime</h3>
+                    <p>Einstein's relativistic spacetime where gravity curves geometry.</p>
+                    
+                    <div class="equation">
+                        R_μν - ½Rg_μν = (8πG/c⁴)T_μν
+                        <br><small>Einstein Field Equations</small>
+                    </div>
+                    
+                    <p><strong>Properties:</strong></p>
+                    <ul>
+                        <li>Gravitational time dilation</li>
+                        <li>Spacetime curvature</li>
+                        <li>Causal structure</li>
+                        <li>Event horizons</li>
+                    </ul>
+                    
+                    <p><strong>Black Hole Connection:</strong><br>
+                    Classical description of black holes as spacetime warps</p>
+                `
+            },
+            '3d': {
+                title: '3D: Classical Matter',
+                content: `
+                    <h3>3D: Solid Matter States</h3>
+                    <p>Our familiar three-dimensional reality of classical matter.</p>
+                    
+                    <div class="equation">
+                        ρ₀ = baseline density
+                        <br><small>Reference State</small>
+                    </div>
+                    
+                    <div class="equation">
+                        I₁₋₃ = k log(N!)
+                        <br><small>Classical Information</small>
+                    </div>
+                    
+                    <p><strong>Characteristics:</strong></p>
+                    <ul>
+                        <li>Crystalline structures</li>
+                        <li>Classical mechanics</li>
+                        <li>Thermal equilibrium</li>
+                        <li>Macroscopic objects</li>
+                    </ul>
+                `
+            },
+            '2d': {
+                title: '2D: Liquid States',
+                content: `
+                    <h3>2D: Fluid Dynamics</h3>
+                    <p>Liquid states with surface phenomena and fluid behavior.</p>
+                    
+                    <p><strong>Key Features:</strong></p>
+                    <ul>
+                        <li>Surface tension effects</li>
+                        <li>Fluid dynamics</li>
+                        <li>Phase transitions</li>
+                        <li>Interfacial phenomena</li>
+                    </ul>
+                    
+                    <p><strong>Information Processing:</strong><br>
+                    Surface-based information storage, holographic principles emerge</p>
+                `
+            },
+            '1d': {
+                title: '1D: Gas States',
+                content: `
+                    <h3>1D: Gaseous States</h3>
+                    <p>Maximum entropy states with minimal structural organization.</p>
+                    
+                    <p><strong>Properties:</strong></p>
+                    <ul>
+                        <li>Kinetic theory</li>
+                        <li>Maximum entropy</li>
+                        <li>Minimal structure</li>
+                        <li>Thermal motion</li>
+                    </ul>
+                    
+                    <p><strong>Information Content:</strong><br>
+                    Minimal organized information, maximum thermal noise</p>
+                `
+            }
+        };
+
+        function showInfo(dimension) {
+            const panel = document.getElementById('infoPanel');
+            const content = document.getElementById('infoContent');
+            
+            if (infoData[dimension]) {
+                content.innerHTML = infoData[dimension].content;
+                panel.classList.add('active');
+            }
+        }
+
+        function closeInfo() {
+            const panel = document.getElementById('infoPanel');
+            panel.classList.remove('active');
+        }
+
+        // Add some dynamic effects
+        document.addEventListener('DOMContentLoaded', function() {
+            const dimensions = document.querySelectorAll('.dimension');
+            dimensions.forEach((dim, index) => {
+                dim.style.animationDelay = `${index * 0.1}s`;
+                dim.style.animation = 'fadeIn 0.5s ease forwards';
+            });
+        });
+
+        // CSS for fade in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px) translateX(-50%); }
+                to { opacity: 1; transform: translateY(0) translateX(-50%); }
+            }
+            
+            .dimension {
+                opacity: 0;
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>
